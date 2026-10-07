@@ -26,9 +26,6 @@ namespace AcefalosBank
             Saldo = saldoInicial >= 0 ? saldoInicial : throw new ArgumentException("O saldo inicial não pode ser negativo.");
         }
 
-        /// <summary>
-        /// Incrementa o saldo se o valor for maior que zero.
-        /// </summary>
         public virtual bool Depositar(decimal valor)
         {
             if (valor <= 0)
@@ -40,9 +37,6 @@ namespace AcefalosBank
             return true;
         }
 
-        /// <summary>
-        /// Valida se há saldo suficiente antes de subtrair.
-        /// </summary>
         public virtual bool Sacar(decimal valor)
         {
             if (valor <= 0 || valor > Saldo)
