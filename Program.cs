@@ -39,3 +39,65 @@ namespace AcefalosBank
         }
     }
 }
+
+//////////////////////////////////////////////////////////////////////////
+
+
+bool executando = true;
+
+while (executando)
+{
+    Console.Clear();
+
+    Console.WriteLine("=================================");
+    Console.WriteLine("         ACEFALOS BANK");
+    Console.WriteLine("=================================");
+    Console.WriteLine("1 - Criar Conta");
+    Console.WriteLine("2 - Realizar Depósito");
+    Console.WriteLine("3 - Realizar Saque");
+    Console.WriteLine("4 - Realizar Transferência");
+    Console.WriteLine("5 - Exibir Saldo / Extrato");
+    Console.WriteLine("0 - Sair");
+    Console.WriteLine("=================================");
+    Console.Write("Escolha uma opção: ");
+
+    if (!int.TryParse(Console.ReadLine(), out int opcao))
+    {
+        Console.WriteLine("Opção inválida!");
+        Console.ReadLine();
+        continue;
+    }
+
+    switch (opcao)
+    {
+        case 1:
+            // Criar Conta 
+            break;
+
+        case 2:
+            // Realizar Depósito
+            break;
+
+        case 3:
+            // Realizar Saque
+            break;
+
+        case 4:
+            // Realizar Transferência
+            break;
+
+        case 5:
+            // Exibir Saldo / Extrato
+            break;
+
+        case 0:
+            Console.WriteLine("Encerrando o programa...");
+            executando = false;
+            break;
+
+        default:
+            Console.WriteLine("Opção inválida!");
+            Console.ReadLine();
+            break;
+    }
+}
