@@ -1,0 +1,33 @@
+ACEFALOS BANK - Sistema de Contas Bancárias (Mini-Banco)
+=========================================================
+
+REQUISITOS PARA EXECUTAR
+------------------------
+- .NET SDK 9.0 instalado (verifique com o comando: dotnet --version)
+  Download: https://dotnet.microsoft.com/download/dotnet/9.0
+
+COMO EXECUTAR
+-------------
+1. Abra o terminal (PowerShell ou Prompt de Comando) na pasta do projeto,
+   onde está o arquivo AcefalosBank.csproj.
+2. Execute:
+
+       dotnet run
+
+OPÇÕES DO MENU
+--------------
+1 - Criar Conta            : informa número, nome e CPF do titular, saldo inicial
+                             e tipo (1 - Corrente, 2 - Poupança)
+2 - Realizar Depósito      : informa o número da conta e o valor
+3 - Realizar Saque         : informa o número da conta e o valor
+4 - Realizar Transferência : informa a conta de origem, a de destino e o valor
+5 - Consultar Saldo        : informa o número da conta e exibe titular e saldo
+6 - Listar Contas          : lista todas as contas com titular, tipo e saldo
+0 - Sair
+
+OBSERVAÇÕES
+-----------
+- Valores monetários podem ser digitados com vírgula (ex.: 150,50).
+- Os dados são mantidos apenas na memória: ao encerrar o programa, as contas
+  são perdidas.
+- Não há persistência em arquivo ou banco de dados.

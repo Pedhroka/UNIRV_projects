@@ -1,42 +1,24 @@
-namespace UNIRV_projects.Models
+namespace AcefalosBank.Models
 {
     public class ContaCorrente : ContaBancaria
     {
         public decimal TaxaManutencao { get; private set; }
 
-        public ContaCorrente(string numeroConta, string titular, decimal saldoInicial = 0m, decimal taxaManutencao = 5.00m)
-            : base(numeroConta, titular, saldoInicial)
+        public ContaCorrente(int numeroConta, string agencia, Cliente titular, decimal saldoInicial = 0m, decimal taxaManutencao = 5.00m)
+            : base(numeroConta, agencia, titular, saldoInicial)
         {
             TaxaManutencao = taxaManutencao;
         }
 
-        public override bool Sacar(decimal valor)
+        public bool CobrarTaxaManutencao()
         {
-            if (valor <= 0)
+            if (Saldo < TaxaManutencao)
             {
-                throw new ArgumentException("O valor do saque deve ser maior que zero.");
+                return false;
             }
 
-            if (Saldo >= valor)
-            {
-                Saldo -= valor;
-                return true;
-            }
-
-            Console.WriteLine("Saldo insuficiente para realizar o saque.");
-            return false;
-        }
-
-        public void CobrarTaxaManutencao()
-        {
-            if (Saldo >= TaxaManutencao)
-            {
-                Saldo -= TaxaManutencao;
-            }
-            else
-            {
-                Console.WriteLine("Saldo insuficiente para cobrar a taxa de manutenção.");
-            }
+            Saldo -= TaxaManutencao;
+            return true;
         }
     }
 }

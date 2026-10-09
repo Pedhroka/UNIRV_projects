@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,12 +14,15 @@ namespace AcefalosBank
             Contas = new List<ContaBancaria>();
         }
 
-        public void AdicionarConta(ContaBancaria conta)
+        public bool AdicionarConta(ContaBancaria conta)
         {
-            if (conta != null)
+            if (conta == null || BuscarConta(conta.NumeroConta) != null)
             {
-                Contas.Add(conta);
+                return false;
             }
+
+            Contas.Add(conta);
+            return true;
         }
 
         public ContaBancaria BuscarConta(int numero)
@@ -33,29 +35,18 @@ namespace AcefalosBank
             ContaBancaria contaOrigem = BuscarConta(numeroOrigem);
             ContaBancaria contaDestino = BuscarConta(numeroDestino);
 
-            if (contaOrigem == null)
+            if (contaOrigem == null || contaDestino == null || contaOrigem == contaDestino)
             {
-                Console.WriteLine("Erro: Conta de origem não encontrada no banco.");
                 return false;
             }
 
-            if (contaDestino == null)
+            if (!contaOrigem.Sacar(valor))
             {
-                Console.WriteLine("Erro: Conta de destino não encontrada no banco.");
                 return false;
             }
 
-            if (contaOrigem.Sacar(valor))
-            {
-                contaDestino.Depositar(valor);
-                Console.WriteLine($"Transferência de R${valor:F2} realizada com sucesso!");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("Erro: Saldo insuficiente na conta de origem ou valor inválido.");
-                return false;
-            }
+            contaDestino.Depositar(valor);
+            return true;
         }
     }
 }
